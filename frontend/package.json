@@ -1,0 +1,27 @@
+{
+  "name": "srps-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "canvas-confetti": "^1.9.4",
+    "framer-motion": "^13.5.1",
+    "lucide-react": "^1.50.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "puppeteer-core": "^24.43.1",
+    "vite": "^5.4.2"
+  }
+}
