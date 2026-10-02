@@ -57,7 +57,7 @@ export default function StatCard({
   value, 
   icon: Icon, 
   decimals = 0, 
-  accentColor = 'var(--role-accent, var(--vermilion))',
+  accentColor = 'var(--primary)',
   badgeText,
   onClick,
   active = false,
@@ -69,9 +69,8 @@ export default function StatCard({
       className={`stat-card ${onClick ? 'cursor-pointer' : ''}`}
       style={{
         cursor: onClick ? 'pointer' : 'default',
-        borderLeft: `5px solid ${accentColor}`,
-        backgroundColor: active ? 'var(--bg-surface-warm)' : 'var(--bg-surface)',
-        borderColor: active ? accentColor : 'var(--ink)'
+        backgroundColor: active ? 'var(--surface-2)' : 'var(--surface)',
+        borderColor: active ? 'var(--primary)' : 'var(--border)'
       }}
       onClick={onClick}
       id={domId}
@@ -80,11 +79,13 @@ export default function StatCard({
         <span className="stat-label">{label}</span>
         {Icon && (
           <div 
-            className="d-flex align-items-center justify-content-center rounded p-2"
+            className="d-flex align-items-center justify-content-center"
             style={{ 
-              backgroundColor: 'var(--bg-surface-sunken)', 
-              color: accentColor,
-              border: '1.5px solid var(--ink)'
+              width: '38px',
+              height: '38px',
+              borderRadius: '10px',
+              backgroundColor: 'var(--primary-soft)', 
+              color: 'var(--primary)'
             }}
           >
             <Icon size={18} />
@@ -93,7 +94,7 @@ export default function StatCard({
       </div>
 
       <div className="d-flex align-items-baseline justify-content-between">
-        <div className="stat-value">
+        <div className="stat-value" style={{ fontWeight: 700, color: 'var(--ink)' }}>
           <AnimatedNumber value={value} decimals={decimals} domId={valueDomId} />
         </div>
 
@@ -101,8 +102,8 @@ export default function StatCard({
           <span 
             className="badge"
             style={{
-              backgroundColor: active ? accentColor : 'var(--bg-surface-sunken)',
-              color: active ? '#FFFFFF' : 'var(--ink)'
+              backgroundColor: active ? 'var(--primary)' : 'var(--surface-2)',
+              color: active ? '#FFFFFF' : 'var(--muted)'
             }}
           >
             {badgeText}

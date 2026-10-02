@@ -127,10 +127,12 @@ export default function App() {
       >
         <div className="paper-noise-overlay" />
         <div 
-          className="d-flex align-items-center justify-content-center rounded p-2 mb-3 shadow"
+          className="d-flex align-items-center justify-content-center rounded p-2 mb-3"
           style={{ 
-            backgroundColor: 'var(--bg-surface-warm)', 
-            border: '2px solid var(--ink)',
+            backgroundColor: 'var(--surface)', 
+            border: '1px solid var(--border)',
+            borderRadius: '12px',
+            boxShadow: 'var(--shadow-md)',
             width: '72px',
             height: '72px'
           }}

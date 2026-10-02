@@ -363,7 +363,7 @@ export default function ExamOfficer({ user, onLogout }) {
               ) : (
                 <div className="table-responsive">
                   <table className="table table-bordered table-hover align-middle mb-0 text-nowrap" id="broadsheet-table">
-                    <thead className="table-dark">
+                    <thead>
                       <tr>
                         <th style={{ width: '40px' }}>#</th>
                         <th>Matric No</th>
@@ -573,7 +573,7 @@ export default function ExamOfficer({ user, onLogout }) {
           </div>
         )}
         {/* UNN Institutional Footer on Page */}
-        <footer className="mt-5 pt-3 pb-4 text-center border-top border-2 no-print" style={{ borderColor: 'var(--ink-border)' }}>
+        <footer className="mt-5 pt-3 pb-4 text-center border-top no-print" style={{ borderColor: 'var(--border)' }}>
           <div className="font-serif fst-italic" style={{ color: 'var(--primary)', fontSize: '0.88rem' }}>
             © 2026 University of Nigeria, Nsukka. To Restore the Dignity of Man.
           </div>

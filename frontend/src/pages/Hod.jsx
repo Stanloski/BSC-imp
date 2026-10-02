@@ -188,7 +188,7 @@ export default function Hod({ user, onLogout }) {
           subtitle="Department of Computer Science, Faculty of Physical Sciences • Head of Department (HOD) Endorsement Console"
           actionElement={
             <div className="d-flex align-items-center gap-2">
-              <span className="editorial-stamp" style={{ borderColor: 'var(--unn-gold)', color: 'var(--ink)' }}>
+              <span className="editorial-stamp">
                 Executive Authority
               </span>
             </div>
@@ -320,7 +320,7 @@ export default function Hod({ user, onLogout }) {
             ) : (
               <div className="table-responsive">
                 <table className="table table-hover table-bordered align-middle mb-0" id="hod-results-table">
-                  <thead className="table-dark">
+                  <thead>
                     <tr>
                       {statusFilter === 'pending' && (
                         <th style={{ width: '40px' }} className="text-center">
@@ -429,7 +429,7 @@ export default function Hod({ user, onLogout }) {
         </div>
 
         {/* UNN Institutional Footer on Page */}
-        <footer className="mt-5 pt-3 pb-4 text-center border-top border-2 no-print" style={{ borderColor: 'var(--ink-border)' }}>
+        <footer className="mt-5 pt-3 pb-4 text-center border-top no-print" style={{ borderColor: 'var(--border)' }}>
           <div className="font-serif fst-italic" style={{ color: 'var(--primary)', fontSize: '0.88rem' }}>
             © 2026 University of Nigeria, Nsukka. To Restore the Dignity of Man.
           </div>

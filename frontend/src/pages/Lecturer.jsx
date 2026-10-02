@@ -216,10 +216,10 @@ export default function Lecturer({ user, onLogout }) {
                         className="btn text-start p-3 d-flex justify-content-between align-items-center w-100"
                         id={`course-select-${c.course_code.replace(/\s+/g, '')}`}
                         style={{
-                          backgroundColor: isSelected ? 'var(--role-accent-soft, var(--forest-soft))' : 'var(--bg-surface)',
-                          borderColor: isSelected ? 'var(--role-accent, var(--forest))' : 'var(--ink)',
-                          boxShadow: isSelected ? '4px 4px 0px var(--ink)' : '2px 2px 0px var(--ink)',
-                          transform: isSelected ? 'translate(-1px, -1px)' : 'none'
+                          backgroundColor: isSelected ? 'var(--primary-soft)' : 'var(--surface)',
+                          borderColor: isSelected ? 'var(--primary)' : 'var(--border)',
+                          boxShadow: isSelected ? 'var(--shadow-md)' : 'var(--shadow-sm)',
+                          borderRadius: '10px'
                         }}
                       >
                         <div>
@@ -296,7 +296,7 @@ export default function Lecturer({ user, onLogout }) {
                   <form onSubmit={handleSubmit} id="lecturer-scores-form">
                     <div className="table-responsive mb-3">
                       <table className="table table-sm table-hover align-middle mb-0">
-                        <thead className="table-dark">
+                        <thead>
                           <tr>
                             <th style={{ width: '115px' }}>Matric No</th>
                             <th>Student Name</th>
@@ -398,7 +398,7 @@ export default function Lecturer({ user, onLogout }) {
                       </table>
                     </div>
 
-                    <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-3 border-top border-2" style={{ borderColor: 'var(--ink)' }}>
+                    <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-3 border-top" style={{ borderColor: 'var(--border)' }}>
                       <div className="small text-muted font-mono d-flex align-items-center gap-1">
                         <Lock size={14} style={{ color: 'var(--ink-muted)' }} />
                         <span>Edits to students with approved results will be automatically locked and ignored.</span>
@@ -432,7 +432,7 @@ export default function Lecturer({ user, onLogout }) {
         </div>
 
         {/* UNN Institutional Footer on Page */}
-        <footer className="mt-5 pt-3 pb-4 text-center border-top border-2 no-print" style={{ borderColor: 'var(--ink-border)' }}>
+        <footer className="mt-5 pt-3 pb-4 text-center border-top no-print" style={{ borderColor: 'var(--border)' }}>
           <div className="font-serif fst-italic" style={{ color: 'var(--primary)', fontSize: '0.88rem' }}>
             © 2026 University of Nigeria, Nsukka. To Restore the Dignity of Man.
           </div>

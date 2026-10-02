@@ -8,7 +8,9 @@ frontend/dist/
 .env.*.local
 frontend/.env.local
 frontend/.temp*
+frontend/temp_security_profile/
 .temp*
+temp_security_profile/
 *.log
 
 # Editor & OS files

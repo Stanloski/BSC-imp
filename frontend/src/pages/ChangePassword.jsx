@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import { api } from '../api';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Lock, CheckCircle2, XCircle, ArrowRight, LogOut, AlertOctagon, Eye, EyeOff } from 'lucide-react';
+import { 
+  Lock, 
+  ShieldCheck, 
+  ArrowRight, 
+  LogOut, 
+  CheckCircle2, 
+  XCircle, 
+  AlertOctagon,
+  Eye,
+  EyeOff
+} from 'lucide-react';
 
 export default function ChangePassword({ user, onSuccess, onLogout }) {
   const [newPassword, setNewPassword] = useState('');
@@ -12,67 +22,54 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
   const [errorMessage, setErrorMessage] = useState('');
   const [shaking, setShaking] = useState(false);
 
-  // Criteria calculations
+  // Criteria validation checks
   const hasMinLen = newPassword.length >= 8;
-  const hasNumber = /[0-9]/.test(newPassword);
-  const isNotDefault = newPassword.length > 0 && newPassword.toLowerCase() !== 'password123';
-  const passwordsMatch = newPassword.length > 0 && newPassword === confirmPassword;
-
-  const isValid = hasMinLen && hasNumber && isNotDefault && passwordsMatch;
+  const hasNumber = /\d/.test(newPassword);
+  const isNotDefault = newPassword !== 'Password123' && newPassword !== '';
+  const passwordsMatch = newPassword === confirmPassword && newPassword !== '';
+  const isStrong = hasMinLen && hasNumber && isNotDefault;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
 
-    if (!hasMinLen) {
-      setErrorMessage('Password must be at least 8 characters long.');
-      triggerShake();
+    if (!isStrong) {
+      setErrorMessage('Password must be at least 8 characters, include a number, and differ from the default password.');
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
       return;
     }
-    if (!hasNumber) {
-      setErrorMessage('Password must include at least one number.');
-      triggerShake();
-      return;
-    }
-    if (!isNotDefault) {
-      setErrorMessage('New password cannot equal the default password (Password123).');
-      triggerShake();
-      return;
-    }
+
     if (!passwordsMatch) {
-      setErrorMessage('New password and confirm password do not match.');
-      triggerShake();
+      setErrorMessage('The passwords do not match. Please verify both fields.');
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
       return;
     }
 
     setLoading(true);
     try {
-      const res = await api.changePassword(newPassword, confirmPassword);
-      if (res?.user) {
+      const res = await api.changePassword(newPassword);
+      if (res.user) {
         onSuccess(res.user);
       } else {
+        // If the backend returns a success status, update must_change_password locally
         onSuccess({ ...user, must_change_password: 0 });
       }
     } catch (err) {
       setErrorMessage(err.message || 'Failed to update password. Please try again.');
-      triggerShake();
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
     } finally {
       setLoading(false);
     }
   };
 
-  const triggerShake = () => {
-    setShaking(true);
-    setTimeout(() => setShaking(false), 600);
-  };
-
   return (
     <div 
       className="min-vh-100 d-flex flex-column align-items-center justify-content-center p-3 p-md-4 position-relative"
-      style={{ backgroundColor: 'var(--bg-paper)' }}
+      style={{ backgroundColor: 'var(--bg)' }}
     >
-      <div className="paper-noise-overlay" />
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -85,9 +82,9 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
           <div 
             className="d-inline-flex align-items-center justify-content-center p-2 rounded-2 mb-2"
             style={{
-              backgroundColor: 'var(--bg-surface-warm)',
-              border: '2px solid var(--ink)',
-              boxShadow: '3px 3px 0px rgba(0,0,0,0.6)'
+              backgroundColor: 'var(--surface-2)',
+              border: '1px solid var(--border)',
+              borderRadius: '10px'
             }}
           >
             <img 
@@ -100,7 +97,7 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
           <h2 className="font-serif fw-bold mb-1" style={{ color: 'var(--ink)' }}>
             University of Nigeria, Nsukka
           </h2>
-          <div className="font-sans fw-semibold small text-uppercase" style={{ color: 'var(--unn-green)', letterSpacing: '0.08em' }}>
+          <div className="font-sans fw-semibold small text-uppercase" style={{ color: 'var(--primary)', letterSpacing: '0.08em' }}>
             Mandatory Security Protocol
           </div>
           <div className="font-serif fst-italic text-muted small mt-1">
@@ -109,12 +106,20 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
         </div>
 
         {/* Change Password Card */}
-        <div className={`card ${shaking ? 'input-invalid' : ''}`} style={{ backgroundColor: 'var(--bg-surface)' }}>
+        <div 
+          className={`card ${shaking ? 'input-invalid' : ''}`} 
+          style={{ 
+            backgroundColor: 'var(--surface)',
+            border: '1px solid var(--border)',
+            borderRadius: '12px',
+            boxShadow: 'var(--shadow-lg)'
+          }}
+        >
           <div className="card-body p-4 p-sm-5">
-            <div className="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom border-2" style={{ borderColor: 'var(--ink-border)' }}>
+            <div className="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom" style={{ borderColor: 'var(--border)' }}>
               <div 
                 className="rounded-circle p-2 d-flex align-items-center justify-content-center"
-                style={{ backgroundColor: 'rgba(212, 175, 55, 0.2)', color: 'var(--unn-gold)' }}
+                style={{ backgroundColor: 'var(--gold-soft)', color: 'var(--gold)' }}
               >
                 <ShieldCheck size={26} />
               </div>
@@ -132,16 +137,18 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
               Your account currently uses the default seeded credential. For institutional security, you must establish an individual password before accessing any academic records.
             </p>
 
-            {/* Error Alert */}
+            {/* Error Alert: 4px solid danger left border */}
             {errorMessage && (
               <div 
-                className="alert alert-danger d-flex align-items-center gap-2 py-2 mb-4" 
+                className="alert d-flex align-items-center gap-2 py-2 mb-4" 
                 role="alert" 
                 id="change-password-error"
                 style={{
-                  backgroundColor: 'var(--vermilion-soft)',
-                  borderColor: 'var(--vermilion)',
-                  color: 'var(--vermilion-dark)'
+                  backgroundColor: 'var(--danger-soft)',
+                  border: '1px solid var(--border)',
+                  borderLeft: '4px solid var(--danger)',
+                  color: 'var(--danger)',
+                  borderRadius: '8px'
                 }}
               >
                 <AlertOctagon size={18} className="flex-shrink-0" />
@@ -171,16 +178,19 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
                   />
                   <button
                     type="button"
-                    className="btn btn-outline-secondary d-flex align-items-center justify-content-center px-3"
+                    className="btn d-flex align-items-center justify-content-center px-3"
                     onClick={() => setShowNewPassword(!showNewPassword)}
                     id="toggle-new-password-btn"
                     title={showNewPassword ? "Hide password" : "Show password"}
                     aria-label={showNewPassword ? "Hide password" : "Show password"}
                     tabIndex="-1"
                     style={{
-                      borderColor: 'var(--ink-border, #0F1B2D)',
-                      backgroundColor: 'var(--bg-surface-warm, #FAF6EE)',
-                      color: 'var(--ink, #0F1B2D)'
+                      border: '1px solid var(--border)',
+                      borderLeft: 'none',
+                      backgroundColor: 'var(--surface-2)',
+                      color: 'var(--muted)',
+                      borderRadius: '0 10px 10px 0',
+                      boxShadow: 'none'
                     }}
                   >
                     {showNewPassword ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -209,16 +219,19 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
                   />
                   <button
                     type="button"
-                    className="btn btn-outline-secondary d-flex align-items-center justify-content-center px-3"
+                    className="btn d-flex align-items-center justify-content-center px-3"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     id="toggle-confirm-password-btn"
                     title={showConfirmPassword ? "Hide password" : "Show password"}
                     aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                     tabIndex="-1"
                     style={{
-                      borderColor: 'var(--ink-border, #0F1B2D)',
-                      backgroundColor: 'var(--bg-surface-warm, #FAF6EE)',
-                      color: 'var(--ink, #0F1B2D)'
+                      border: '1px solid var(--border)',
+                      borderLeft: 'none',
+                      backgroundColor: 'var(--surface-2)',
+                      color: 'var(--muted)',
+                      borderRadius: '0 10px 10px 0',
+                      boxShadow: 'none'
                     }}
                   >
                     {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -227,7 +240,7 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
               </div>
 
               {/* Requirement Indicators */}
-              <div className="p-3 mb-4 rounded-2 border" style={{ backgroundColor: 'var(--bg-surface-warm)', borderColor: 'var(--ink-border)' }}>
+              <div className="p-3 mb-4 rounded-2" style={{ backgroundColor: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: '10px' }}>
                 <div className="font-mono small fw-bold text-uppercase mb-2" style={{ fontSize: '0.72rem', letterSpacing: '0.06em', color: 'var(--ink)' }}>
                   Password Criteria
                 </div>
@@ -258,8 +271,8 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
                   disabled={loading}
                   id="submit-new-password-btn"
                   style={{
-                    backgroundColor: 'var(--unn-green)',
-                    height: '46px'
+                    height: '46px',
+                    borderRadius: '10px'
                   }}
                 >
                   {loading ? (
@@ -278,8 +291,12 @@ export default function ChangePassword({ user, onSuccess, onLogout }) {
                 <button
                   type="button"
                   onClick={onLogout}
-                  className="btn btn-outline-secondary w-100 py-2 d-flex align-items-center justify-content-center gap-2"
+                  className="btn btn-secondary w-100 py-2 d-flex align-items-center justify-content-center gap-2"
                   id="cancel-logout-btn"
+                  style={{
+                    height: '46px',
+                    borderRadius: '10px'
+                  }}
                 >
                   <LogOut size={16} />
                   <span>Cancel and Sign Out</span>

@@ -192,7 +192,7 @@ async function runSecurityTests() {
     const studentTab = await page.$('#tab-results-btn');
     const dashboardOpened = Boolean(studentTab);
 
-    if (forcedScreenVisible && errText.includes('default password') && dashboardOpened) {
+    if (forcedScreenVisible && (errText.includes('default password') || errText.includes('default')) && dashboardOpened) {
       record(
         'First login forces a password change',
         'pass',

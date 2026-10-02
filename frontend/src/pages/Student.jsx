@@ -186,7 +186,7 @@ export default function Student({ user, onLogout }) {
                     <div className="text-center py-5" id="no-approved-results-banner">
                       <div 
                         className="d-inline-flex align-items-center justify-content-center p-3 rounded-circle mb-3"
-                        style={{ backgroundColor: 'var(--bg-surface-sunken)', border: '2px solid var(--ink)' }}
+                        style={{ backgroundColor: 'var(--surface-2)', border: '1px solid var(--border)' }}
                       >
                         <Clock size={36} style={{ color: 'var(--ink-muted)' }} />
                       </div>
@@ -201,12 +201,12 @@ export default function Student({ user, onLogout }) {
                     resultsData.map((res, index) => (
                       <div
                         key={res.result_id || index}
-                        className="result-slip-printable mb-4 p-4 border border-2 rounded bg-white position-relative"
+                        className="result-slip-printable mb-4 p-4 border rounded position-relative"
                         id={`result-card-${res.session?.replace('/', '-')}-${res.semester}`}
-                        style={{ borderColor: 'var(--ink)' }}
+                        style={{ borderColor: 'var(--border)', backgroundColor: 'var(--surface)' }}
                       >
                         {/* Official UNN Result Header */}
-                        <div className="text-center border-bottom border-2 pb-3 mb-4" style={{ borderColor: 'var(--ink)' }}>
+                        <div className="text-center border-bottom pb-3 mb-4" style={{ borderColor: 'var(--border)' }}>
                           <div className="d-flex justify-content-center mb-2">
                             <img 
                               src="/unn-logo.png" 
@@ -221,13 +221,13 @@ export default function Student({ user, onLogout }) {
                           <div className="font-sans fw-semibold mb-2" style={{ color: 'var(--primary)', fontSize: '0.95rem' }}>
                             Faculty of Physical Sciences • Department of Computer Science
                           </div>
-                          <div className="d-inline-block px-3 py-1 border border-2 border-dark rounded font-mono fw-bold text-uppercase" style={{ letterSpacing: '0.14em', backgroundColor: 'var(--bg-surface-warm)', fontSize: '0.82rem' }}>
+                          <div className="d-inline-block px-3 py-1 border rounded-pill font-mono fw-bold text-uppercase" style={{ letterSpacing: '0.14em', backgroundColor: 'var(--surface-2)', borderColor: 'var(--border)', fontSize: '0.82rem' }}>
                             STATEMENT OF RESULT
                           </div>
                         </div>
 
                         {/* Student Details Metadata Block */}
-                        <div className="row g-2 mb-4 p-3 rounded small" style={{ backgroundColor: 'var(--bg-surface-warm)', border: '1.5px solid var(--ink)' }}>
+                        <div className="row g-2 mb-4 p-3 rounded small" style={{ backgroundColor: 'var(--surface-2)', border: '1px solid var(--border)' }}>
                           <div className="col-12 col-md-4">
                             <span className="text-muted">Full Name:</span>{' '}
                             <strong className="font-serif d-block" style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>
@@ -299,7 +299,7 @@ export default function Student({ user, onLogout }) {
                         {/* Courses Breakdown Table with Watermark */}
                         <div className="result-table-watermark-container table-responsive mb-4">
                           <table className="table table-bordered table-hover align-middle mb-0 position-relative" style={{ zIndex: 1, backgroundColor: 'transparent' }}>
-                            <thead className="table-dark">
+                            <thead>
                               <tr>
                                 <th style={{ width: '15%' }}>Code</th>
                                 <th>Course Title</th>
@@ -338,10 +338,10 @@ export default function Student({ user, onLogout }) {
                         </div>
 
                         {/* Official Signatures & Institutional Motto Footer */}
-                        <div className="pt-3 border-top border-2" style={{ borderColor: 'var(--ink)' }}>
+                        <div className="pt-3 border-top" style={{ borderColor: 'var(--border)' }}>
                           <div className="row g-4 align-items-end mb-3">
                             <div className="col-12 col-md-4 text-center text-md-start">
-                              <div className="border-bottom border-2 border-dark mb-1 pb-4" style={{ maxWidth: '200px' }} />
+                              <div className="border-bottom mb-1 pb-4" style={{ maxWidth: '200px', borderColor: 'var(--border)' }} />
                               <div className="font-serif fw-bold small">Examination Officer</div>
                               <div className="small text-muted font-mono" style={{ fontSize: '0.72rem' }}>Faculty of Physical Sciences</div>
                             </div>
@@ -356,7 +356,7 @@ export default function Student({ user, onLogout }) {
                             </div>
 
                             <div className="col-12 col-md-4 text-center text-md-end">
-                              <div className="border-bottom border-2 border-dark mb-1 pb-4 ms-md-auto" style={{ maxWidth: '200px' }} />
+                              <div className="border-bottom mb-1 pb-4 ms-md-auto" style={{ maxWidth: '200px', borderColor: 'var(--border)' }} />
                               <div className="font-serif fw-bold small">Head of Department</div>
                               <div className="small text-muted font-mono" style={{ fontSize: '0.72rem' }}>Department of Computer Science</div>
                             </div>
@@ -531,7 +531,7 @@ export default function Student({ user, onLogout }) {
         </AnimatePresence>
 
         {/* UNN Institutional Footer on Page */}
-        <footer className="mt-5 pt-3 pb-4 text-center border-top border-2 no-print" style={{ borderColor: 'var(--ink-border)' }}>
+        <footer className="mt-5 pt-3 pb-4 text-center border-top no-print" style={{ borderColor: 'var(--border)' }}>
           <div className="font-serif fst-italic" style={{ color: 'var(--primary)', fontSize: '0.88rem' }}>
             © 2026 University of Nigeria, Nsukka. To Restore the Dignity of Man.
           </div>

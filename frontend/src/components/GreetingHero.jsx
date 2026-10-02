@@ -23,11 +23,11 @@ export default function GreetingHero({ user, sessionInfo, subtitle, actionElemen
     <div className="greeting-hero">
       <div className="d-flex flex-column gap-1">
         <div className="d-flex align-items-center gap-2">
-          <span className="small font-mono fw-bold text-uppercase d-flex align-items-center gap-1" style={{ color: 'var(--role-accent, var(--primary))', letterSpacing: '0.08em' }}>
+          <span className="small font-mono fw-bold text-uppercase d-flex align-items-center gap-1" style={{ color: 'var(--primary)', letterSpacing: '0.06em' }}>
             <Sparkles size={14} />
             UNN Student Result Processing System
           </span>
-          <span style={{ color: 'var(--ink-faint)' }}>•</span>
+          <span style={{ color: 'var(--border)' }}>•</span>
           <span className="small text-muted d-flex align-items-center gap-1 font-mono">
             <Calendar size={13} />
             {today}
@@ -35,7 +35,7 @@ export default function GreetingHero({ user, sessionInfo, subtitle, actionElemen
         </div>
 
         <h1 className="h3 font-serif fw-bold mb-0" style={{ color: 'var(--ink)' }}>
-          Welcome, <span style={{ color: 'var(--role-accent, var(--primary))' }}>{displayName}</span>
+          Welcome, <span className="user-welcome-name" style={{ color: 'var(--primary)' }}>{displayName}</span>
         </h1>
 
         <div className="text-muted small" style={{ maxWidth: '650px' }}>
@@ -46,7 +46,7 @@ export default function GreetingHero({ user, sessionInfo, subtitle, actionElemen
       <div className="d-flex align-items-center gap-3">
         {sessionInfo && (
           <div className="editorial-stamp" title="Active Academic Session & Semester Gate">
-            <Award size={16} style={{ color: 'var(--role-accent, var(--primary))' }} />
+            <Award size={15} style={{ color: 'var(--gold)' }} />
             <span>{sessionInfo.session || '2025/2026'}</span>
             <span>•</span>
             <span>{sessionInfo.semester || 'First'} Semester</span>

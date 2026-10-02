@@ -311,7 +311,7 @@ export default function Admin({ user, onLogout }) {
           subtitle="Department of Computer Science, Faculty of Physical Sciences • System Administration Console"
           actionElement={
             <div className="d-flex align-items-center gap-2">
-              <span className="editorial-stamp" style={{ borderColor: 'var(--unn-teal)', color: 'var(--ink)' }}>
+              <span className="editorial-stamp">
                 System Root Access
               </span>
             </div>
@@ -325,7 +325,7 @@ export default function Admin({ user, onLogout }) {
               label="Students"
               value={studentCount}
               icon={GraduationCap}
-              accentColor="var(--vermilion)"
+              accentColor="var(--primary)"
             />
           </div>
           <div className="col-6 col-md-2">
@@ -333,7 +333,7 @@ export default function Admin({ user, onLogout }) {
               label="Lecturers"
               value={lecturerCount}
               icon={BookOpen}
-              accentColor="var(--forest)"
+              accentColor="var(--primary)"
             />
           </div>
           <div className="col-6 col-md-2">
@@ -341,7 +341,7 @@ export default function Admin({ user, onLogout }) {
               label="Exam Officers"
               value={examOfficerCount}
               icon={Sliders}
-              accentColor="var(--saffron-dark)"
+              accentColor="var(--gold)"
             />
           </div>
           <div className="col-6 col-md-2">
@@ -357,7 +357,7 @@ export default function Admin({ user, onLogout }) {
               label="Admins"
               value={adminCount}
               icon={UserCheck}
-              accentColor="var(--teal)"
+              accentColor="var(--primary)"
             />
           </div>
           <div className="col-6 col-md-2">
@@ -365,7 +365,7 @@ export default function Admin({ user, onLogout }) {
               label="Courses"
               value={coursesList.length}
               icon={BookPlus}
-              accentColor="var(--ink)"
+              accentColor="var(--primary)"
             />
           </div>
         </div>
@@ -423,7 +423,7 @@ export default function Admin({ user, onLogout }) {
                   ) : (
                     <div className="table-responsive">
                       <table className="table table-hover align-middle mb-0" id="users-table">
-                        <thead className="table-dark">
+                        <thead>
                           <tr>
                             <th style={{ width: '35px' }}>#</th>
                             <th>Full Name</th>
@@ -472,7 +472,7 @@ export default function Admin({ user, onLogout }) {
                                 <td className="text-center">
                                   <button
                                     onClick={() => handleOpenUserEdit(u)}
-                                    className="btn btn-outline-secondary btn-sm p-1 me-1"
+                                    className="btn btn-outline-primary btn-sm p-1 me-1"
                                     id={`edit-user-${u.user_id}`}
                                     title="Edit user"
                                   >
@@ -510,11 +510,11 @@ export default function Admin({ user, onLogout }) {
                     <div 
                       key={ru.user_id}
                       className="p-2 rounded border"
-                      style={{ backgroundColor: 'var(--bg-surface-sunken)', borderColor: 'var(--ink-faint)' }}
+                      style={{ backgroundColor: 'var(--surface-2)', borderColor: 'var(--border)' }}
                     >
                       <div className="d-flex justify-content-between align-items-center">
                         <strong className="small font-serif">{ru.first_name} {ru.surname}</strong>
-                        <span className="badge bg-light font-mono" style={{ fontSize: '0.62rem' }}>{ru.role}</span>
+                        <span className="badge bg-secondary font-mono" style={{ fontSize: '0.62rem' }}>{ru.role}</span>
                       </div>
                       <div className="small font-mono text-muted text-truncate" style={{ fontSize: '0.72rem' }}>
                         {ru.email}
@@ -550,7 +550,7 @@ export default function Admin({ user, onLogout }) {
             <div className="card-body p-3">
               <div className="table-responsive">
                 <table className="table table-hover align-middle mb-0" id="admin-courses-table">
-                  <thead className="table-dark">
+                  <thead>
                     <tr>
                       <th>Code</th>
                       <th>Course Title</th>
@@ -597,7 +597,7 @@ export default function Admin({ user, onLogout }) {
                         <td className="text-center">
                           <button
                             onClick={() => handleOpenCourseEdit(c)}
-                            className="btn btn-outline-secondary btn-sm p-1 me-1"
+                            className="btn btn-outline-primary btn-sm p-1 me-1"
                             id={`edit-course-${c.course_code}`}
                             title="Edit Course"
                           >
@@ -687,7 +687,7 @@ export default function Admin({ user, onLogout }) {
           </div>
         )}
         {/* UNN Institutional Footer on Page */}
-        <footer className="mt-5 pt-3 pb-4 text-center border-top border-2 no-print" style={{ borderColor: 'var(--ink-border)' }}>
+        <footer className="mt-5 pt-3 pb-4 text-center border-top no-print" style={{ borderColor: 'var(--border)' }}>
           <div className="font-serif fst-italic" style={{ color: 'var(--primary)', fontSize: '0.88rem' }}>
             © 2026 University of Nigeria, Nsukka. To Restore the Dignity of Man.
           </div>

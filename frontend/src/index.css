@@ -1,84 +1,91 @@
 /* ==========================================================================
-   SRPS - STUDENT RESULT PROCESSING SYSTEM
-   DESIGN DIRECTION: "Academic Editorial"
-   A hand-crafted, high-contrast, tactile aesthetic reminiscent of university
-   bulletins, archival ledgers, rubber seals, and heavyweight paper.
+   UNN SRPS - UNIVERSITY OF NIGERIA, NSUKKA
+   STUDENT RESULT PROCESSING SYSTEM
+   DESIGN SYSTEM: UNN Institutional Editorial (Green, White, Gold)
    ========================================================================== */
 
 :root {
-  /* Core Paper & Ink Palette */
-  --bg-paper: #F4EFE6;
-  --bg-surface: #FFFFFF;
-  --bg-surface-warm: #FAF6EF;
-  --bg-surface-sunken: #ECE5D8;
-  --ink: #0F1B2D;
-  --ink-dark: #070E18;
-  --ink-light: #2C3E55;
-  --ink-muted: #5C6E82;
-  --ink-faint: #D5CEC1;
-  --ink-border: #0F1B2D;
+  /* ------------------------------------------------------------------------
+     UNN Official Light Mode Palette
+     ------------------------------------------------------------------------ */
+  --bg: #F7F8F5;            /* Soft warm white, faint 3% dot grid */
+  --surface: #FFFFFF;       /* Crisp white surface */
+  --surface-2: #F0F3EE;     /* Elevated subtle surface / table headers / cards */
+  --ink: #14231B;           /* Deep green-black for primary text */
+  --muted: #5B6B62;         /* Secondary text, labels, subtle borders */
+  --border: #DDE3DC;        /* Subtle green-tinted grey */
+  --primary: #1B6B3A;       /* UNN Forest Green */
+  --primary-hover: #15562E;
+  --primary-soft: #E3F1E8;  /* Soft green tint for badges, active states */
+  --gold: #C99A2E;          /* UNN Warm Gold for highlights and accents */
+  --gold-soft: #FBF3DD;
+  --danger: #C0392B;        /* Tertiary red for errors, delete, F grade */
+  --danger-soft: #FBE9E7;
 
-  /* UNN Institutional Palette (Extracted from official crest) */
-  --unn-green: #006633;
-  --unn-green-soft: #E6F4EA;
-  --unn-green-dark: #004D26;
-  --unn-gold: #D4AF37;
-  --unn-gold-soft: #FCF8EC;
-  --unn-gold-dark: #B38F1F;
-  --unn-forest: #0F4D32;
-  --unn-forest-soft: #EAF3F0;
-  --unn-forest-dark: #093321;
-  --unn-amber: #C59B27;
-  --unn-amber-soft: #FEF8EA;
-  --unn-teal: #137547;
-  --unn-teal-soft: #E8F5EE;
+  /* Shadows: Soft, multi-layered, tinted with dark green */
+  --shadow-sm: 0 1px 2px rgba(20, 35, 27, 0.06), 0 1px 3px rgba(20, 35, 27, 0.08);
+  --shadow-md: 0 4px 12px rgba(20, 35, 27, 0.08), 0 2px 4px rgba(20, 35, 27, 0.05);
+  --shadow-lg: 0 12px 32px rgba(20, 35, 27, 0.12), 0 4px 8px rgba(20, 35, 27, 0.06);
 
-  /* Standard Brand Aliases */
-  --primary: var(--unn-green);
-  --primary-soft: var(--unn-green-soft);
-  --primary-dark: var(--unn-green-dark);
-  --secondary: var(--unn-gold);
-  --secondary-soft: var(--unn-gold-soft);
-  --accent: var(--unn-forest);
+  /* Border Radii */
+  --radius-card: 12px;
+  --radius-btn: 10px;
+  --radius-input: 10px;
+  --radius-pill: 999px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
 
-  /* Legacy Editorial Accent Aliases */
-  --vermilion: #006633;
-  --vermilion-soft: #E6F4EA;
-  --vermilion-dark: #004D26;
-  --forest: #0F4D32;
-  --forest-soft: #EAF3F0;
-  --forest-dark: #093321;
-  --saffron: #C59B27;
-  --saffron-soft: #FEF8EA;
-  --saffron-dark: #9A7210;
-  --gold: #D4AF37;
-  --gold-soft: #FCF8EC;
-  --teal: #137547;
-  --teal-soft: #E8F5EE;
+  /* Aliases for System-wide Compatibility */
+  --bg-paper: var(--bg);
+  --bg-surface: var(--surface);
+  --bg-surface-warm: var(--surface-2);
+  --bg-surface-sunken: var(--surface-2);
+  --ink-dark: var(--ink);
+  --ink-light: var(--ink);
+  --ink-muted: var(--muted);
+  --ink-faint: var(--border);
+  --ink-border: var(--border);
 
-  /* Default Role Accent (Overridden per role below) */
-  --role-accent: var(--unn-green);
-  --role-accent-soft: var(--unn-green-soft);
-  --role-accent-dark: var(--unn-green-dark);
+  --card-shadow: var(--shadow-sm);
+  --card-shadow-hover: var(--shadow-md);
+  --card-shadow-sm: var(--shadow-sm);
+  --btn-shadow: none;
+  --btn-shadow-hover: none;
+  --btn-shadow-active: none;
 
-  /* Shadows & Hard Offsets (Strict Academic Editorial) */
-  --card-shadow: 6px 6px 0px var(--ink);
-  --card-shadow-hover: 8px 8px 0px var(--ink);
-  --card-shadow-sm: 4px 4px 0px var(--ink);
-  --btn-shadow: 3px 3px 0px var(--ink);
-  --btn-shadow-hover: 4px 4px 0px var(--ink);
-  --btn-shadow-active: 1px 1px 0px var(--ink);
+  --border-thick: 1px solid var(--border);
+  --border-thin: 1px solid var(--border);
+  --border-faint: 1px solid var(--border);
 
-  /* Borders */
-  --border-thick: 2px solid var(--ink);
-  --border-thin: 1px solid var(--ink);
-  --border-faint: 1px solid var(--ink-faint);
+  --unn-green: var(--primary);
+  --unn-green-soft: var(--primary-soft);
+  --unn-green-dark: var(--primary-hover);
+  --unn-gold: var(--gold);
+  --unn-gold-soft: var(--gold-soft);
+  --unn-forest: var(--primary);
+  --unn-forest-soft: var(--primary-soft);
+  --unn-forest-dark: var(--primary-hover);
+  --unn-amber: var(--gold);
+  --unn-amber-soft: var(--gold-soft);
+  --unn-teal: #1D7A8C;
+  --unn-teal-soft: #E0F2F1;
 
-  /* Radii */
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-pill: 9999px;
+  --vermilion: var(--danger);
+  --vermilion-soft: var(--danger-soft);
+  --vermilion-dark: #a82e21;
+  --forest: var(--primary);
+  --forest-soft: var(--primary-soft);
+  --forest-dark: var(--primary-hover);
+  --saffron: var(--gold);
+  --saffron-soft: var(--gold-soft);
+  --saffron-dark: var(--gold);
+  --teal: #1D7A8C;
+  --teal-soft: #E0F2F1;
+
+  --role-accent: var(--primary);
+  --role-accent-soft: var(--primary-soft);
+  --role-accent-dark: var(--primary-hover);
 
   /* Typography */
   --font-serif: 'Fraunces', Georgia, serif;
@@ -90,85 +97,98 @@
 }
 
 /* --------------------------------------------------------------------------
-   Role-Based Themes (Variations of UNN Institutional Palette)
+   Role Overrides (Harmonized within UNN Palette)
    -------------------------------------------------------------------------- */
-[data-role="student"] {
-  --role-accent: var(--unn-green);
-  --role-accent-soft: var(--unn-green-soft);
-  --role-accent-dark: var(--unn-green-dark);
-}
-
-[data-role="lecturer"] {
-  --role-accent: var(--unn-forest);
-  --role-accent-soft: var(--unn-forest-soft);
-  --role-accent-dark: var(--unn-forest-dark);
+[data-role="student"],
+[data-role="lecturer"],
+[data-role="hod"],
+[data-role="admin"] {
+  --role-accent: var(--primary);
+  --role-accent-soft: var(--primary-soft);
+  --role-accent-dark: var(--primary-hover);
 }
 
 [data-role="exam_officer"] {
-  --role-accent: var(--unn-amber);
-  --role-accent-soft: var(--unn-amber-soft);
-  --role-accent-dark: #9A7210;
-}
-
-[data-role="hod"] {
-  --role-accent: var(--ink);
-  --role-accent-soft: #EAEFF5;
-  --role-accent-dark: var(--ink-dark);
-  --role-detail: var(--unn-gold);
-}
-
-[data-role="admin"] {
-  --role-accent: var(--unn-teal);
-  --role-accent-soft: var(--unn-teal-soft);
-  --role-accent-dark: #0A4227;
+  --role-accent: var(--gold);
+  --role-accent-soft: var(--gold-soft);
+  --role-accent-dark: var(--gold);
 }
 
 /* --------------------------------------------------------------------------
-   Dark Mode (Deep Ink Theme)
+   UNN Dark Mode Palette (when [data-theme="dark"] or .dark)
    -------------------------------------------------------------------------- */
-[data-theme="dark"] {
-  --bg-paper: #0B1422;
-  --bg-surface: #132238;
-  --bg-surface-warm: #182B46;
-  --bg-surface-sunken: #080E18;
-  --ink: #F4EFE6;
-  --ink-dark: #FFFFFF;
-  --ink-light: #D6D0C5;
-  --ink-muted: #8F9FA8;
-  --ink-faint: #253952;
-  --ink-border: #2E4562;
+[data-theme="dark"],
+.dark {
+  --bg: #0C1410;            /* Very dark forest */
+  --surface: #131E18;       /* Elevated dark surface */
+  --surface-2: #1A2820;     /* Cards, inputs, table header */
+  --ink: #EAF1EC;           /* Crisp light green-tinted white */
+  --muted: #9DB0A4;         /* Secondary text, meets 4.5:1 contrast */
+  --border: #2A3B31;        /* Visible subtle border */
+  --primary: #3FA866;       /* Brighter green for dark mode readability */
+  --primary-hover: #52BE79;
+  --primary-soft: #16301F;  /* Subtle green background */
+  --gold: #E0B34A;          /* Brighter gold */
+  --gold-soft: #2B2410;
+  --danger: #E5675B;        /* Readable red */
+  --danger-soft: #331A17;
 
-  --unn-green-soft: rgba(0, 102, 51, 0.25);
-  --unn-forest-soft: rgba(15, 77, 50, 0.25);
-  --unn-gold-soft: rgba(212, 175, 55, 0.22);
-  --unn-amber-soft: rgba(197, 155, 39, 0.22);
-  --unn-teal-soft: rgba(19, 117, 71, 0.25);
+  /* Dark mode shadows: soft ambient glow with subtle inner highlight */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
 
-  --vermilion-soft: rgba(0, 102, 51, 0.25);
-  --forest-soft: rgba(15, 77, 50, 0.25);
-  --saffron-soft: rgba(197, 155, 39, 0.22);
-  --gold-soft: rgba(212, 175, 55, 0.22);
-  --teal-soft: rgba(19, 117, 71, 0.25);
+  --bg-paper: var(--bg);
+  --bg-surface: var(--surface);
+  --bg-surface-warm: var(--surface-2);
+  --bg-surface-sunken: var(--surface-2);
+  --ink-dark: var(--ink);
+  --ink-light: var(--ink);
+  --ink-muted: var(--muted);
+  --ink-faint: var(--border);
+  --ink-border: var(--border);
 
-  --card-shadow: 6px 6px 0px #04080E;
-  --card-shadow-hover: 8px 8px 0px #04080E;
-  --card-shadow-sm: 4px 4px 0px #04080E;
-  --btn-shadow: 3px 3px 0px #04080E;
-  --btn-shadow-hover: 4px 4px 0px #04080E;
-  --btn-shadow-active: 1px 1px 0px #04080E;
+  --card-shadow: var(--shadow-sm);
+  --card-shadow-hover: var(--shadow-md);
+  --card-shadow-sm: var(--shadow-sm);
+  --btn-shadow: none;
+  --btn-shadow-hover: none;
+  --btn-shadow-active: none;
 
-  --border-thick: 2px solid var(--ink-border);
-  --border-thin: 1px solid var(--ink-border);
-  --border-faint: 1px solid var(--ink-faint);
-}
+  --border-thick: 1px solid var(--border);
+  --border-thin: 1px solid var(--border);
+  --border-faint: 1px solid var(--border);
 
-/* UNN Logo styling in dark mode */
-[data-theme="dark"] .unn-logo-img {
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  --unn-green: var(--primary);
+  --unn-green-soft: var(--primary-soft);
+  --unn-green-dark: var(--primary-hover);
+  --unn-gold: var(--gold);
+  --unn-gold-soft: var(--gold-soft);
+  --unn-forest: var(--primary);
+  --unn-forest-soft: var(--primary-soft);
+  --unn-forest-dark: var(--primary-hover);
+  --unn-amber: var(--gold);
+  --unn-amber-soft: var(--gold-soft);
+  --unn-teal: #38B2AC;
+  --unn-teal-soft: #132E2B;
+
+  --vermilion: var(--danger);
+  --vermilion-soft: var(--danger-soft);
+  --forest: var(--primary);
+  --forest-soft: var(--primary-soft);
+  --saffron: var(--gold);
+  --saffron-soft: var(--gold-soft);
+  --saffron-dark: var(--gold);
+  --teal: #38B2AC;
+  --teal-soft: #132E2B;
+
+  --role-accent: var(--primary);
+  --role-accent-soft: var(--primary-soft);
+  --role-accent-dark: var(--primary-hover);
 }
 
 /* --------------------------------------------------------------------------
-   Global Layout & Background Paper Noise
+   Global Layout & Background Faint Dot Grid
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -177,34 +197,42 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-paper);
+  background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.25s ease, color 0.25s ease;
   min-height: 100vh;
 }
 
-/* Subtle archival paper dot grid texture */
+/* 200ms smooth theme transition */
+html, body, .card, .table-responsive, .app-sidebar, .greeting-hero, 
+.stat-card, .btn, .form-control, .form-select, .badge, .grade-chip,
+.stepper-container, .modal-content, .editorial-toast {
+  transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease !important;
+}
+
+/* Faint 3% dot grid texture */
 body {
-  background-image: radial-gradient(var(--ink-faint) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(20, 35, 27, 0.04) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Noise overlay */
+[data-theme="dark"] body,
+body[data-theme="dark"] {
+  background-image: radial-gradient(rgba(234, 241, 236, 0.035) 1px, transparent 1px);
+}
+
+/* Remove heavy noise texture overlay completely */
 .paper-noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  display: none !important;
+}
+
+/* UNN Logo styling in dark mode */
+[data-theme="dark"] .unn-logo-img {
+  filter: drop-shadow(0 0 3px rgba(63, 168, 102, 0.45));
 }
 
 /* --------------------------------------------------------------------------
@@ -217,16 +245,16 @@ h1, h2, h3, h4, h5, h6,
   font-family: var(--font-serif);
   color: var(--ink);
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   margin-top: 0;
 }
 
-h1 { font-size: 2.35rem; line-height: 1.15; }
-h2 { font-size: 1.85rem; line-height: 1.2; }
-h3 { font-size: 1.45rem; line-height: 1.25; }
-h4 { font-size: 1.25rem; line-height: 1.3; }
-h5 { font-size: 1.1rem; line-height: 1.35; }
-h6 { font-size: 0.95rem; line-height: 1.4; }
+h1 { font-size: 2.2rem; line-height: 1.2; }
+h2 { font-size: 1.75rem; line-height: 1.25; }
+h3 { font-size: 1.35rem; line-height: 1.3; }
+h4 { font-size: 1.15rem; line-height: 1.35; }
+h5 { font-size: 1.05rem; line-height: 1.4; }
+h6 { font-size: 0.92rem; line-height: 1.45; }
 
 p {
   margin-top: 0;
@@ -238,47 +266,49 @@ p {
 }
 
 .text-muted {
-  color: var(--ink-muted) !important;
+  color: var(--muted) !important;
 }
 
 .text-primary {
-  color: var(--role-accent, var(--vermilion)) !important;
+  color: var(--primary) !important;
 }
 
 .text-success {
-  color: var(--forest) !important;
+  color: var(--primary) !important;
 }
 
 .text-warning {
-  color: var(--saffron-dark) !important;
+  color: var(--gold) !important;
 }
 
 .text-danger {
-  color: var(--vermilion) !important;
+  color: var(--danger) !important;
 }
 
 /* --------------------------------------------------------------------------
-   Card Components (Hard Offset Shadow & 2px Border)
+   Cards: background var(--surface), border 1px solid var(--border), 
+   shadow var(--shadow-sm), hover translateY(-2px) and shadow-md.
+   No black offset shadows.
    -------------------------------------------------------------------------- */
 .card {
-  background-color: var(--bg-surface);
-  border: var(--border-thick) !important;
-  border-radius: var(--radius-md) !important;
-  box-shadow: var(--card-shadow) !important;
-  transition: transform 0.16s ease, box-shadow 0.16s ease, background-color 0.2s ease;
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
   overflow: hidden;
   position: relative;
 }
 
 .card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--card-shadow-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md) !important;
 }
 
 .card-header {
-  background-color: var(--bg-surface-sunken);
-  border-bottom: var(--border-thick) !important;
-  color: var(--ink);
+  background-color: var(--surface-2) !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--ink) !important;
   padding: 0.9rem 1.25rem;
   font-family: var(--font-serif);
   font-weight: 700;
@@ -290,13 +320,13 @@ p {
 }
 
 .card-footer {
-  background-color: var(--bg-surface-sunken);
-  border-top: var(--border-thick) !important;
+  background-color: var(--surface-2) !important;
+  border-top: 1px solid var(--border) !important;
   padding: 0.75rem 1.25rem;
 }
 
 /* --------------------------------------------------------------------------
-   Buttons (Editorial Tactile Pressed Effect)
+   Buttons: Modern, rounded (10px), no black borders or harsh shadows
    -------------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
@@ -304,15 +334,14 @@ p {
   justify-content: center;
   gap: 0.5rem;
   font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-size: 0.84rem;
+  letter-spacing: 0.02em;
   padding: 0.55rem 1.15rem;
-  border: var(--border-thick) !important;
-  border-radius: var(--radius-md) !important;
-  box-shadow: var(--btn-shadow);
-  transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent !important;
+  border-radius: var(--radius-btn) !important;
+  box-shadow: none !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   text-decoration: none;
   user-select: none;
@@ -320,136 +349,188 @@ p {
 }
 
 .btn:hover:not(:disabled) {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--btn-shadow-hover);
+  transform: translateY(-1px);
 }
 
 .btn:active:not(:disabled) {
-  transform: translate(2px, 2px);
-  box-shadow: var(--btn-shadow-active);
+  transform: translateY(1px);
 }
 
 .btn:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
-  box-shadow: none;
   transform: none;
 }
 
 .btn-sm {
-  padding: 0.35rem 0.75rem;
-  font-size: 0.75rem;
+  padding: 0.38rem 0.8rem;
+  font-size: 0.76rem;
+  border-radius: 8px !important;
 }
 
 .btn-lg {
   padding: 0.8rem 1.6rem;
   font-size: 0.95rem;
+  border-radius: 12px !important;
 }
 
-/* Button Variants */
+/* Primary Button: Solid var(--primary), white text, hover var(--primary-hover) */
 .btn-primary {
-  background-color: var(--role-accent, var(--vermilion)) !important;
+  background-color: var(--primary) !important;
   color: #FFFFFF !important;
-  border-color: var(--ink) !important;
+  border-color: var(--primary) !important;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: var(--role-accent-dark, var(--vermilion-dark)) !important;
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
   color: #FFFFFF !important;
 }
 
-.btn-secondary {
-  background-color: var(--ink-light) !important;
-  color: #FFFFFF !important;
-  border-color: var(--ink) !important;
+/* Secondary Button: var(--surface-2) background, 1px solid var(--border), var(--ink) text */
+.btn-secondary,
+.btn-outline-secondary {
+  background-color: var(--surface-2) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--border) !important;
 }
 
-.btn-secondary:hover:not(:disabled) {
-  background-color: var(--ink) !important;
-  color: #FFFFFF !important;
+.btn-secondary:hover:not(:disabled),
+.btn-outline-secondary:hover:not(:disabled) {
+  background-color: var(--border) !important;
+  border-color: var(--border) !important;
+  color: var(--ink) !important;
 }
 
 .btn-success {
-  background-color: var(--forest) !important;
+  background-color: var(--primary) !important;
   color: #FFFFFF !important;
-  border-color: var(--ink) !important;
+  border-color: var(--primary) !important;
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+  color: #FFFFFF !important;
 }
 
 .btn-danger {
-  background-color: var(--vermilion) !important;
+  background-color: var(--danger) !important;
   color: #FFFFFF !important;
-  border-color: var(--ink) !important;
+  border-color: var(--danger) !important;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #A32F23 !important;
+  border-color: #A32F23 !important;
+  color: #FFFFFF !important;
 }
 
 .btn-warning {
-  background-color: var(--saffron) !important;
-  color: var(--ink-dark) !important;
-  border-color: var(--ink) !important;
+  background-color: var(--gold) !important;
+  color: #14231B !important;
+  border-color: var(--gold) !important;
+}
+
+.btn-warning:hover:not(:disabled) {
+  background-color: #B58824 !important;
+  color: #14231B !important;
 }
 
 .btn-outline-primary {
-  background-color: transparent !important;
-  color: var(--role-accent, var(--vermilion)) !important;
-  border-color: var(--ink) !important;
+  background-color: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  border-color: var(--border) !important;
 }
+
 .btn-outline-primary:hover:not(:disabled) {
-  background-color: var(--role-accent, var(--vermilion)) !important;
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
   color: #FFFFFF !important;
 }
 
-.btn-outline-secondary {
-  background-color: transparent !important;
-  color: var(--ink) !important;
-  border-color: var(--ink) !important;
-}
-.btn-outline-secondary:hover:not(:disabled) {
-  background-color: var(--ink-faint) !important;
-  color: var(--ink) !important;
+.btn-outline-danger {
+  background-color: var(--danger-soft) !important;
+  color: var(--danger) !important;
+  border-color: var(--border) !important;
 }
 
-.btn-outline-danger {
-  background-color: transparent !important;
-  color: var(--vermilion) !important;
-  border-color: var(--ink) !important;
-}
 .btn-outline-danger:hover:not(:disabled) {
-  background-color: var(--vermilion) !important;
+  background-color: var(--danger) !important;
+  border-color: var(--danger) !important;
   color: #FFFFFF !important;
 }
 
 .btn-outline-success {
-  background-color: transparent !important;
-  color: var(--forest) !important;
-  border-color: var(--ink) !important;
+  background-color: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  border-color: var(--border) !important;
 }
+
 .btn-outline-success:hover:not(:disabled) {
-  background-color: var(--forest) !important;
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
   color: #FFFFFF !important;
 }
 
 .btn-outline-warning {
-  background-color: transparent !important;
-  color: var(--saffron-dark) !important;
-  border-color: var(--ink) !important;
+  background-color: var(--gold-soft) !important;
+  color: var(--gold) !important;
+  border-color: var(--border) !important;
 }
+
 .btn-outline-warning:hover:not(:disabled) {
-  background-color: var(--saffron) !important;
-  color: var(--ink-dark) !important;
+  background-color: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: #14231B !important;
 }
 
 .btn-outline-info {
-  background-color: transparent !important;
-  color: var(--teal) !important;
-  border-color: var(--ink) !important;
+  background-color: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  border-color: var(--border) !important;
 }
+
 .btn-outline-info:hover:not(:disabled) {
-  background-color: var(--teal) !important;
+  background-color: var(--primary) !important;
+  color: #FFFFFF !important;
+}
+
+/* Icon Buttons: Edit & Delete (Crisp in light & dark mode) */
+.btn-icon-edit,
+button[title*="Edit"],
+button[title*="Grade"] {
+  background-color: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.btn-icon-edit:hover,
+button[title*="Edit"]:hover,
+button[title*="Grade"]:hover {
+  background-color: var(--primary) !important;
+  color: #FFFFFF !important;
+}
+
+.btn-icon-delete,
+button[title*="Delete"],
+button[title*="Remove"] {
+  background-color: var(--danger-soft) !important;
+  color: var(--danger) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.btn-icon-delete:hover,
+button[title*="Delete"]:hover,
+button[title*="Remove"]:hover {
+  background-color: var(--danger) !important;
   color: #FFFFFF !important;
 }
 
 .btn-close {
   background-color: transparent;
-  opacity: 0.7;
+  opacity: 0.65;
+  filter: var(--ink-filter, none);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 .btn-close:hover {
@@ -457,59 +538,84 @@ p {
   transform: rotate(90deg);
 }
 
+[data-theme="dark"] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 /* --------------------------------------------------------------------------
-   Tables (Academic Ledger Style)
+   Tables:
+   Header: var(--surface-2) background, var(--muted) text, uppercase, small,
+   weight 600. In BOTH light and dark mode. Never cream on a dark page.
    -------------------------------------------------------------------------- */
 .table-responsive {
-  border: var(--border-thick);
-  border-radius: var(--radius-md);
-  box-shadow: var(--card-shadow-sm);
-  background-color: var(--bg-surface);
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: var(--shadow-sm) !important;
+  background-color: var(--surface) !important;
   overflow: auto;
 }
 
-.table {
+.table,
+.table-dark,
+.table-hover {
+  --bs-table-bg: transparent !important;
+  --bs-table-color: var(--ink) !important;
+  --bs-table-hover-bg: var(--surface-2) !important;
+  --bs-table-hover-color: var(--ink) !important;
+  --bs-table-border-color: var(--border) !important;
   width: 100%;
   margin-bottom: 0;
-  color: var(--ink);
+  color: var(--ink) !important;
   border-collapse: collapse;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
-.table th {
-  background-color: var(--bg-surface-sunken);
-  color: var(--ink);
+.table > :not(caption) > * > * {
+  background-color: transparent !important;
+  color: var(--ink) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+.table tbody tr {
+  background-color: transparent !important;
+  color: var(--ink) !important;
+  transition: background-color 0.12s ease;
+}
+
+.table tbody tr:hover,
+.table tbody tr:hover > *,
+.table-hover > tbody > tr:hover,
+.table-hover > tbody > tr:hover > * {
+  background-color: var(--surface-2) !important;
+  color: var(--ink) !important;
+}
+
+.table th,
+.table thead th,
+.table-dark th,
+thead.table-dark th {
+  background-color: var(--surface-2) !important;
+  color: var(--muted) !important;
   font-family: var(--font-sans);
   text-transform: uppercase;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  font-weight: 600;
   padding: 12px 14px;
-  border-bottom: 2px solid var(--ink) !important;
+  border-bottom: 1px solid var(--border) !important;
   border-top: none !important;
   white-space: nowrap;
 }
 
 .table td {
-  padding: 11px 14px;
-  border-bottom: 1px solid var(--ink-faint) !important;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border) !important;
   border-top: none !important;
   font-size: 0.88rem;
   vertical-align: middle;
-}
-
-.table tbody tr {
-  transition: background-color 0.12s ease;
-}
-
-.table tbody tr:hover {
-  background-color: var(--bg-surface-warm) !important;
-}
-
-.table-dark th {
-  background-color: var(--ink) !important;
-  color: var(--bg-paper) !important;
-  border-bottom: 2px solid var(--ink) !important;
+  color: var(--ink) !important;
+  background-color: transparent !important;
 }
 
 .table-bordered {
@@ -517,7 +623,7 @@ p {
 }
 .table-bordered td,
 .table-bordered th {
-  border-right: 1px solid var(--ink-faint) !important;
+  border-right: 1px solid var(--border) !important;
 }
 .table-bordered td:last-child,
 .table-bordered th:last-child {
@@ -525,51 +631,66 @@ p {
 }
 
 /* --------------------------------------------------------------------------
-   Form Controls (Thick Borders, Floating Labels, Animated Underline)
+   Form Controls:
+   background var(--surface), border 1px solid var(--border), text var(--ink),
+   placeholder var(--muted). Focus: border-color var(--primary), box-shadow
+   0 0 0 3px rgba(27,107,58,0.25) [in dark mode rgba(63,168,102,0.25)]
    -------------------------------------------------------------------------- */
 .form-control,
 .form-select {
-  background-color: var(--bg-surface) !important;
+  background-color: var(--surface) !important;
   color: var(--ink) !important;
-  border: var(--border-thick) !important;
-  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-input) !important;
   font-family: var(--font-sans);
   font-size: 0.9rem;
-  padding: 0.55rem 0.85rem;
+  padding: 0.6rem 0.9rem;
   box-shadow: none !important;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.form-control::placeholder {
+  color: var(--muted) !important;
+  opacity: 0.75;
 }
 
 .form-control:focus,
 .form-select:focus {
-  border-color: var(--role-accent, var(--vermilion)) !important;
-  box-shadow: 3px 3px 0px var(--role-accent, var(--vermilion)) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(27, 107, 58, 0.25) !important;
   outline: none;
+  color: var(--ink) !important;
+  background-color: var(--surface) !important;
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  box-shadow: 0 0 0 3px rgba(63, 168, 102, 0.25) !important;
 }
 
 .form-label {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--ink-light);
+  color: var(--muted);
   margin-bottom: 0.35rem;
 }
 
 .input-group-text {
-  background-color: var(--bg-surface-sunken) !important;
-  color: var(--ink) !important;
-  border: var(--border-thick) !important;
-  border-radius: var(--radius-md) 0 0 var(--radius-md) !important;
+  background-color: var(--surface-2) !important;
+  color: var(--muted) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-input) 0 0 var(--radius-input) !important;
   font-weight: 600;
 }
 
 .input-group .form-control {
   border-left: none !important;
-  border-radius: 0 var(--radius-md) var(--radius-md) 0 !important;
+  border-radius: 0 var(--radius-input) var(--radius-input) 0 !important;
 }
 
-/* Invalid / Out of Range Shake Animation */
+/* Shake Animation */
 @keyframes shakeInput {
   0%, 100% { transform: translateX(0); }
   20%, 60% { transform: translateX(-4px); }
@@ -577,64 +698,84 @@ p {
 }
 
 .input-invalid {
-  border-color: var(--vermilion) !important;
-  box-shadow: 3px 3px 0px var(--vermilion) !important;
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.25) !important;
   animation: shakeInput 0.35s ease;
-  background-color: var(--vermilion-soft) !important;
+  background-color: var(--danger-soft) !important;
 }
 
 /* --------------------------------------------------------------------------
-   Badges & Grade Chips
+   Badges & Grade Chips:
+   Soft tinted background, matching colored text, no black border.
+   A: primary-soft / primary
+   B: soft teal
+   C: gold-soft / gold
+   D: soft orange
+   E/F: danger-soft / danger
    -------------------------------------------------------------------------- */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
   font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.73rem;
-  padding: 0.3rem 0.65rem;
-  border: 1.5px solid var(--ink);
-  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.74rem;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill) !important;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  box-shadow: 1px 1px 0px var(--ink);
+  box-shadow: none !important;
 }
 
 .badge.bg-primary {
-  background-color: var(--role-accent, var(--vermilion)) !important;
-  color: #FFFFFF !important;
-}
-.badge.bg-success {
-  background-color: var(--forest) !important;
-  color: #FFFFFF !important;
-}
-.badge.bg-warning {
-  background-color: var(--saffron) !important;
-  color: var(--ink-dark) !important;
-}
-.badge.bg-danger {
-  background-color: var(--vermilion) !important;
-  color: #FFFFFF !important;
-}
-.badge.bg-info {
-  background-color: var(--teal) !important;
-  color: #FFFFFF !important;
-}
-.badge.bg-secondary {
-  background-color: var(--bg-surface-sunken) !important;
-  color: var(--ink) !important;
-}
-.badge.bg-dark {
-  background-color: var(--ink) !important;
-  color: var(--bg-paper) !important;
-}
-.badge.bg-light {
-  background-color: var(--bg-surface) !important;
-  color: var(--ink) !important;
+  background-color: var(--primary-soft) !important;
+  color: var(--primary) !important;
 }
 
-/* Pop-in animation for grade chips */
+.badge.bg-success {
+  background-color: var(--primary-soft) !important;
+  color: var(--primary) !important;
+}
+
+.badge.bg-warning {
+  background-color: var(--gold-soft) !important;
+  color: var(--gold) !important;
+}
+
+.badge.bg-danger {
+  background-color: var(--danger-soft) !important;
+  color: var(--danger) !important;
+}
+
+.badge.bg-info {
+  background-color: #E0F2F1 !important;
+  color: #1D7A8C !important;
+}
+
+[data-theme="dark"] .badge.bg-info {
+  background-color: #132E2B !important;
+  color: #38B2AC !important;
+}
+
+.badge.bg-secondary {
+  background-color: var(--surface-2) !important;
+  color: var(--muted) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.badge.bg-dark {
+  background-color: var(--surface-2) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.badge.bg-light {
+  background-color: var(--surface) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--border) !important;
+}
+
 @keyframes popIn {
   0% { transform: scale(0.65); opacity: 0; }
   75% { transform: scale(1.15); opacity: 1; }
@@ -645,47 +786,81 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  height: 28px;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--ink);
+  min-width: 30px;
+  height: 30px;
+  border-radius: var(--radius-pill) !important;
+  border: none !important;
   font-family: var(--font-serif);
-  font-weight: 900;
+  font-weight: 800;
   font-size: 0.95rem;
-  box-shadow: 2px 2px 0px var(--ink);
+  box-shadow: none !important;
   animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.grade-chip-A { background-color: var(--forest); color: #FFFFFF; }
-.grade-chip-B { background-color: var(--teal); color: #FFFFFF; }
-.grade-chip-C { background-color: var(--saffron); color: var(--ink-dark); }
-.grade-chip-D { background-color: #E07A5F; color: #FFFFFF; }
-.grade-chip-E { background-color: #D9822B; color: #FFFFFF; }
-.grade-chip-F { background-color: var(--vermilion); color: #FFFFFF; }
+.grade-chip-A { 
+  background-color: var(--primary-soft) !important; 
+  color: var(--primary) !important; 
+}
+.grade-chip-B { 
+  background-color: #E0F2F1 !important; 
+  color: #1D7A8C !important; 
+}
+[data-theme="dark"] .grade-chip-B { 
+  background-color: #132E2B !important; 
+  color: #38B2AC !important; 
+}
+.grade-chip-C { 
+  background-color: var(--gold-soft) !important; 
+  color: var(--gold) !important; 
+}
+.grade-chip-D { 
+  background-color: #FEF3C7 !important; 
+  color: #D97706 !important; 
+}
+[data-theme="dark"] .grade-chip-D { 
+  background-color: #2E2008 !important; 
+  color: #F59E0B !important; 
+}
+.grade-chip-E,
+.grade-chip-F { 
+  background-color: var(--danger-soft) !important; 
+  color: var(--danger) !important; 
+}
 
 /* --------------------------------------------------------------------------
-   Stamp-Style Academic Seal Badge
+   Session Badge / Editorial Stamp:
+   var(--gold-soft) background, var(--gold) text, 1px solid var(--gold) border,
+   rounded-full. No dashed black border.
    -------------------------------------------------------------------------- */
 .editorial-stamp {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border: 2px dashed var(--ink);
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-serif);
-  font-size: 0.85rem;
+  border: 1px solid var(--gold) !important;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-pill) !important;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--ink);
-  background-color: var(--bg-surface-warm);
-  transform: rotate(-1deg);
-  box-shadow: 2px 2px 0px var(--ink);
+  color: var(--gold) !important;
+  background-color: var(--gold-soft) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.editorial-stamp svg {
+  color: var(--gold) !important;
 }
 
 /* --------------------------------------------------------------------------
-   App Layout with Sticky Editorial Sidebar
+   App Layout with Sticky Sidebar:
+   background var(--surface), right border 1px solid var(--border).
+   Active item: background var(--primary-soft), text var(--primary), bold,
+   with a 3px solid var(--primary) left bar.
+   Inactive: text var(--muted), hover background var(--surface-2), hover text var(--ink).
+   Motto and footer text meet 4.5:1 contrast against sidebar background.
    -------------------------------------------------------------------------- */
 .app-container {
   display: flex;
@@ -694,15 +869,15 @@ p {
 
 .app-sidebar {
   width: var(--sidebar-width);
-  background-color: var(--bg-surface);
-  border-right: var(--border-thick);
+  background-color: var(--surface) !important;
+  border-right: 1px solid var(--border) !important;
   display: flex;
   flex-direction: column;
   position: sticky;
   top: 0;
   height: 100vh;
   z-index: 1040;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .app-main {
@@ -717,14 +892,15 @@ p {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  color: var(--ink-light);
-  font-weight: 600;
+  padding: 0.7rem 0.95rem;
+  color: var(--muted) !important;
+  font-weight: 500;
   font-size: 0.88rem;
   text-decoration: none;
-  border-radius: var(--radius-md);
-  margin-bottom: 0.35rem;
-  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-bottom: 0.3rem;
+  border: 1px solid transparent;
+  border-left: 3px solid transparent;
   transition: all 0.15s ease;
   cursor: pointer;
   background: transparent;
@@ -733,17 +909,22 @@ p {
 }
 
 .sidebar-nav-item:hover {
-  background-color: var(--bg-surface-sunken);
-  color: var(--ink);
+  background-color: var(--surface-2) !important;
+  color: var(--ink) !important;
   transform: translateX(2px);
 }
 
 .sidebar-nav-item.active {
-  background-color: var(--role-accent-soft, var(--vermilion-soft));
-  color: var(--role-accent, var(--vermilion));
-  border: var(--border-thick);
-  box-shadow: 3px 3px 0px var(--ink);
-  font-weight: 700;
+  background-color: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  border-color: transparent !important;
+  border-left: 3px solid var(--primary) !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+.sidebar-nav-item.active svg {
+  color: var(--primary) !important;
 }
 
 /* Mobile Sidebar Drawer */
@@ -757,7 +938,7 @@ p {
     left: 0;
     bottom: 0;
     transform: translateX(-100%);
-    box-shadow: 10px 0 25px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--shadow-lg);
   }
   .app-sidebar.open {
     transform: translateX(0);
@@ -774,19 +955,22 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(15, 27, 45, 0.6);
+  background-color: rgba(12, 20, 16, 0.6);
   backdrop-filter: blur(2px);
   z-index: 1030;
 }
 
 /* --------------------------------------------------------------------------
-   Top Navbar Alternative / Greeting Hero
+   Hero Welcome Card:
+   background var(--surface), border 1px solid var(--border), left border
+   4px solid var(--primary). User name in var(--primary).
    -------------------------------------------------------------------------- */
 .greeting-hero {
-  background-color: var(--bg-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-md);
-  box-shadow: var(--card-shadow);
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 4px solid var(--primary) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: var(--shadow-sm) !important;
   padding: 1.5rem 1.75rem;
   margin-bottom: 1.75rem;
   display: flex;
@@ -799,48 +983,50 @@ p {
 }
 
 .greeting-hero::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 6px;
-  height: 100%;
-  background-color: var(--role-accent, var(--vermilion));
+  display: none !important;
+}
+
+.greeting-hero h1 span,
+.greeting-hero .user-welcome-name {
+  color: var(--primary) !important;
 }
 
 /* --------------------------------------------------------------------------
-   Stat Cards with Fraunces Count-Up Numbers
+   Stat Cards:
+   background var(--surface), border 1px solid var(--border), shadow var(--shadow-sm).
+   Icon container: rounded square (10px), background var(--primary-soft), icon in var(--primary).
+   Big number: font-weight 700, text var(--ink).
    -------------------------------------------------------------------------- */
 .stat-card {
-  background-color: var(--bg-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-md);
-  box-shadow: var(--card-shadow);
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: var(--shadow-sm) !important;
   padding: 1.25rem;
-  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
 }
 
 .stat-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md) !important;
 }
 
 .stat-card .stat-label {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--ink-muted);
+  font-weight: 600;
+  color: var(--muted) !important;
   margin-bottom: 0.4rem;
 }
 
 .stat-card .stat-value {
   font-family: var(--font-serif);
   font-size: 2.15rem;
-  font-weight: 900;
-  color: var(--ink);
+  font-weight: 700 !important;
+  color: var(--ink) !important;
   line-height: 1;
 }
 
@@ -861,7 +1047,7 @@ p {
 }
 
 .gpa-ring-bg {
-  stroke: var(--ink-faint);
+  stroke: var(--surface-2);
   fill: none;
 }
 
@@ -881,7 +1067,7 @@ p {
 }
 
 /* --------------------------------------------------------------------------
-   Workflow Stepper (Student Horizontal Pipeline)
+   Workflow Stepper
    -------------------------------------------------------------------------- */
 .stepper-container {
   display: flex;
@@ -889,10 +1075,10 @@ p {
   justify-content: space-between;
   position: relative;
   margin: 1.5rem 0 2rem;
-  background-color: var(--bg-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-md);
-  box-shadow: var(--card-shadow-sm);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
   padding: 1.25rem 2rem;
 }
 
@@ -909,44 +1095,45 @@ p {
   width: 42px;
   height: 42px;
   border-radius: var(--radius-pill);
-  border: var(--border-thick);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
+  font-weight: 700;
   font-family: var(--font-mono);
   font-size: 0.95rem;
-  background-color: var(--bg-surface-sunken);
-  color: var(--ink-muted);
-  box-shadow: 2px 2px 0px var(--ink);
+  background-color: var(--surface-2);
+  color: var(--muted);
+  box-shadow: none;
   transition: all 0.25s ease;
 }
 
 .stepper-step.completed .stepper-circle {
-  background-color: var(--forest);
+  background-color: var(--primary);
   color: #FFFFFF;
-  border-color: var(--ink);
+  border-color: var(--primary);
 }
 
 .stepper-step.active .stepper-circle {
-  background-color: var(--role-accent, var(--vermilion));
+  background-color: var(--primary);
   color: #FFFFFF;
-  box-shadow: 0 0 0 4px var(--role-accent-soft, var(--vermilion-soft)), 3px 3px 0px var(--ink);
-  transform: scale(1.1);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+  transform: scale(1.05);
 }
 
 .stepper-label {
   margin-top: 0.5rem;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--ink-light);
+  color: var(--muted);
   text-align: center;
 }
 
 .stepper-step.active .stepper-label {
-  color: var(--role-accent, var(--vermilion));
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .stepper-line {
@@ -954,14 +1141,14 @@ p {
   top: 34px;
   left: 10%;
   right: 10%;
-  height: 3px;
-  background-color: var(--ink-faint);
+  height: 2px;
+  background-color: var(--border);
   z-index: 1;
 }
 
 .stepper-line-fill {
   height: 100%;
-  background-color: var(--forest);
+  background-color: var(--primary);
   transition: width 0.4s ease;
 }
 
@@ -974,7 +1161,7 @@ p {
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--bg-surface-sunken) 25%, var(--bg-surface) 50%, var(--bg-surface-sunken) 75%);
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface) 50%, var(--surface-2) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: var(--radius-sm);
@@ -982,26 +1169,26 @@ p {
 }
 
 /* --------------------------------------------------------------------------
-   Modal Overrides (Spring Scale & Academic Borders)
+   Modal Overrides
    -------------------------------------------------------------------------- */
 .modal-content {
-  background-color: var(--bg-surface) !important;
+  background-color: var(--surface) !important;
   color: var(--ink) !important;
-  border: var(--border-thick) !important;
-  border-radius: var(--radius-md) !important;
-  box-shadow: 10px 10px 0px var(--ink) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: var(--shadow-lg) !important;
   overflow: hidden;
 }
 
 .modal-header {
-  border-bottom: var(--border-thick) !important;
+  border-bottom: 1px solid var(--border) !important;
   padding: 1.15rem 1.4rem;
   font-family: var(--font-serif);
 }
 
 .modal-footer {
-  border-top: var(--border-thick) !important;
-  background-color: var(--bg-surface-sunken) !important;
+  border-top: 1px solid var(--border) !important;
+  background-color: var(--surface-2) !important;
   padding: 0.85rem 1.4rem;
 }
 
@@ -1028,10 +1215,10 @@ p {
 
 .editorial-toast {
   pointer-events: auto;
-  background-color: var(--bg-surface);
-  border: var(--border-thick);
-  border-radius: var(--radius-md);
-  box-shadow: 5px 5px 0px var(--ink);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-md);
   padding: 1rem 1.25rem;
   display: flex;
   align-items: flex-start;
@@ -1045,14 +1232,15 @@ p {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 4px;
-  background-color: var(--role-accent, var(--vermilion));
+  height: 3px;
+  background-color: var(--primary);
   width: 100%;
   transform-origin: left;
 }
 
 /* --------------------------------------------------------------------------
-   Result Slip Watermark & Official Print Styling
+   Result Slip Watermark & Official Print Styling:
+   clean black on white, standard borders, university header in dark green.
    -------------------------------------------------------------------------- */
 .result-table-watermark-container {
   position: relative;
@@ -1078,6 +1266,7 @@ p {
 
 /* --------------------------------------------------------------------------
    PRINT STYLESHEET (Official UNN Statement of Results - A4 Portrait)
+   Clean black on white, standard borders, university header in dark green.
    -------------------------------------------------------------------------- */
 @media print {
   @page {
@@ -1128,11 +1317,17 @@ p {
   }
 
   .result-slip-printable {
-    border: 2pt solid #000000 !important;
-    padding: 20mm !important;
+    border: 1.5pt solid #000000 !important;
+    padding: 16mm !important;
     margin: 0 !important;
     page-break-inside: avoid;
     background: #FFFFFF !important;
+  }
+
+  .result-slip-printable h1,
+  .result-slip-printable h2,
+  .result-slip-printable .institution-title {
+    color: #1B6B3A !important; /* UNN Forest green for header */
   }
 
   .table-responsive {
@@ -1141,7 +1336,7 @@ p {
   }
 
   .table th {
-    background-color: #EEEEEE !important;
+    background-color: #F0F3EE !important;
     color: #000000 !important;
     border-bottom: 1.5pt solid #000000 !important;
     -webkit-print-color-adjust: exact;

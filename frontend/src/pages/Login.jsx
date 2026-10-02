@@ -12,15 +12,17 @@ import {
   AlertOctagon,
   Award,
   Eye,
-  EyeOff
+  EyeOff,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 const TAGLINES = [
-  { word: "Register", desc: "Enrol in semester academic courses", color: "var(--vermilion)" },
-  { word: "Score", desc: "Faculty CA & examination grading", color: "var(--forest)" },
-  { word: "Compute", desc: "Algorithmic GPA & CGPA calculation", color: "var(--saffron-dark)" },
-  { word: "Approve", desc: "Executive HOD scrutiny & endorsement", color: "var(--gold)" },
-  { word: "Publish", desc: "Official verified result slip generation", color: "var(--teal)" }
+  { word: "Register", desc: "Enrol in semester academic courses", color: "var(--gold)" },
+  { word: "Score", desc: "Faculty CA & examination grading", color: "#68D391" },
+  { word: "Compute", desc: "Algorithmic GPA & CGPA calculation", color: "var(--gold)" },
+  { word: "Approve", desc: "Executive HOD scrutiny & endorsement", color: "#4FD1C5" },
+  { word: "Publish", desc: "Official verified result slip generation", color: "var(--gold)" }
 ];
 
 export default function Login({ onLoginSuccess, initialMessage = '' }) {
@@ -32,8 +34,23 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
   const [lockoutSeconds, setLockoutSeconds] = useState(0);
   const [taglineIdx, setTaglineIdx] = useState(0);
   const [shaking, setShaking] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('srps-theme') === 'dark');
 
   const showDemo = Boolean(import.meta.env.DEV && import.meta.env.VITE_SHOW_DEMO === 'true');
+
+  const toggleDarkMode = () => {
+    setDarkMode(prev => {
+      const next = !prev;
+      if (next) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('srps-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('srps-theme', 'light');
+      }
+      return next;
+    });
+  };
 
   // Rotate tagline every 2.8 seconds
   useEffect(() => {
@@ -89,32 +106,30 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
     }
   };
 
-  const fillCredentials = (demoEmail, demoPassword) => {
-    setEmail(demoEmail);
-    setPassword(demoPassword);
+  const fillCredentials = (userEmail, userPass) => {
+    setEmail(userEmail);
+    setPassword(userPass);
     setErrorMessage('');
   };
 
   const currentTag = TAGLINES[taglineIdx];
 
   return (
-    <div className="min-vh-100 d-flex flex-column flex-lg-row" style={{ backgroundColor: 'var(--bg-paper)' }}>
-      <div className="paper-noise-overlay" />
-
+    <div className="min-vh-100 d-flex flex-column flex-lg-row" style={{ backgroundColor: 'var(--bg)' }}>
       {/* ---------------- LEFT SPLIT: ANIMATED ACADEMIC SCENE ---------------- */}
       <div 
         className="col-12 col-lg-6 d-flex flex-column justify-content-between p-4 p-md-5 text-white position-relative overflow-hidden"
         style={{ 
-          backgroundColor: '#0F1B2D',
-          borderRight: '3px solid #000000',
+          background: 'linear-gradient(145deg, #0E3B22, #0A2416)',
+          borderRight: '1px solid var(--border)',
           minHeight: '420px'
         }}
       >
-        {/* Subtle grid pattern */}
+        {/* Subtle dot grid pattern */}
         <div 
           className="position-absolute w-100 h-100 top-0 start-0"
           style={{
-            backgroundImage: 'radial-gradient(rgba(244, 239, 230, 0.12) 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(rgba(201, 154, 46, 0.15) 1px, transparent 1px)',
             backgroundSize: '28px 28px',
             pointerEvents: 'none'
           }}
@@ -130,7 +145,7 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
               left: '50%',
               width: '320px',
               height: '320px',
-              border: '2px dashed rgba(212, 175, 55, 0.4)',
+              border: '1px dashed rgba(201, 154, 46, 0.45)',
               borderRadius: '50%',
               transform: 'translate(-50%, -50%)',
               animation: 'spinSlow 36s linear infinite'
@@ -143,7 +158,7 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
               left: '50%',
               width: '260px',
               height: '260px',
-              border: '1.5px solid rgba(0, 102, 51, 0.35)',
+              border: '1px solid rgba(63, 168, 102, 0.35)',
               borderRadius: '50%',
               transform: 'translate(-50%, -50%)',
               animation: 'spinSlow 24s linear infinite reverse'
@@ -159,7 +174,7 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
               animation: 'floatSlow 6s ease-in-out infinite'
             }}
           >
-            <div className="grade-chip grade-chip-A shadow">A</div>
+            <div className="grade-chip grade-chip-A">A</div>
           </div>
 
           <div
@@ -170,7 +185,7 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
               animation: 'floatSlow 7s ease-in-out infinite 1.5s'
             }}
           >
-            <div className="grade-chip grade-chip-B shadow">B</div>
+            <div className="grade-chip grade-chip-B">B</div>
           </div>
 
           <div
@@ -181,7 +196,7 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
               animation: 'floatSlow 8s ease-in-out infinite 0.7s'
             }}
           >
-            <div className="grade-chip grade-chip-C shadow">C</div>
+            <div className="grade-chip grade-chip-C">C</div>
           </div>
 
           <div
@@ -189,12 +204,13 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
               position: 'absolute',
               bottom: '12%',
               left: '18%',
-              padding: '4px 10px',
-              border: '1px solid rgba(212, 175, 55, 0.4)',
-              borderRadius: '4px',
+              padding: '4px 12px',
+              border: '1px solid rgba(201, 154, 46, 0.4)',
+              borderRadius: '999px',
               fontFamily: 'var(--font-mono)',
               fontSize: '0.75rem',
-              color: 'var(--unn-gold)',
+              color: 'var(--gold)',
+              backgroundColor: 'rgba(201, 154, 46, 0.1)',
               animation: 'floatSlow 9s ease-in-out infinite 2s'
             }}
           >
@@ -208,11 +224,11 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
             <div 
               className="d-flex align-items-center justify-content-center p-1 rounded-2"
               style={{
-                width: '56px',
-                height: '56px',
-                backgroundColor: 'var(--bg-surface-warm)',
-                border: '2px solid var(--ink)',
-                boxShadow: '3px 3px 0px rgba(0,0,0,0.6)',
+                width: '52px',
+                height: '52px',
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(201, 154, 46, 0.4)',
+                borderRadius: '10px',
                 flexShrink: 0
               }}
             >
@@ -220,14 +236,14 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
                 src="/unn-logo.png" 
                 alt="UNN Crest" 
                 className="unn-logo-img" 
-                style={{ width: '48px', height: '48px', objectFit: 'contain' }} 
+                style={{ width: '42px', height: '42px', objectFit: 'contain' }} 
               />
             </div>
             <div>
               <h1 className="font-serif fw-bold fs-4 text-white mb-0" style={{ letterSpacing: '-0.01em', lineHeight: 1.15 }}>
                 University of Nigeria, Nsukka
               </h1>
-              <div className="font-sans fw-semibold" style={{ fontSize: '0.88rem', color: 'var(--unn-gold)' }}>
+              <div className="font-sans fw-semibold" style={{ fontSize: '0.88rem', color: 'var(--gold)' }}>
                 Student Result Processing System
               </div>
               <div className="font-serif fst-italic text-white-50" style={{ fontSize: '0.78rem' }}>
@@ -239,7 +255,7 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
 
         {/* Center Animated Scene: Centered UNN Logo with rotating ring & rotating tagline words */}
         <div className="position-relative z-1 my-4 text-center d-flex flex-column align-items-center justify-content-center">
-          {/* Centered UNN Emblem in the orbit */}
+          {/* Centered UNN Emblem in the orbit with subtle glow */}
           <div className="position-relative d-inline-flex align-items-center justify-content-center mb-3">
             <motion.div 
               animate={{ scale: [1, 1.04, 1] }} 
@@ -247,24 +263,24 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
               className="p-3 rounded-circle"
               style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                border: '2px solid rgba(212, 175, 55, 0.4)',
-                boxShadow: '0 0 25px rgba(0, 102, 51, 0.35)'
+                border: '1px solid rgba(201, 154, 46, 0.45)',
+                boxShadow: '0 0 35px rgba(201, 154, 46, 0.3), 0 0 15px rgba(27, 107, 58, 0.5)'
               }}
             >
               <img 
                 src="/unn-logo.png" 
                 alt="UNN Logo Emblem" 
                 className="unn-logo-img"
-                style={{ width: '84px', height: '84px', objectFit: 'contain' }}
+                style={{ width: '84px', height: '84px', objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(201, 154, 46, 0.5))' }}
               />
             </motion.div>
           </div>
 
-          <div className="small font-mono text-uppercase fw-bold mb-1" style={{ color: 'var(--unn-gold)', letterSpacing: '0.14em' }}>
+          <div className="small font-mono text-uppercase fw-bold mb-1" style={{ color: 'var(--gold)', letterSpacing: '0.14em' }}>
             Academic Result Lifecycle
           </div>
 
-          {/* Rotating Tagline Words: Register, Score, Compute, Approve, Publish */}
+          {/* Rotating Tagline Words */}
           <div style={{ height: '62px', overflow: 'hidden' }}>
             <AnimatePresence mode="wait">
               <motion.div
@@ -284,25 +300,51 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
             </AnimatePresence>
           </div>
 
-          <p className="lead font-sans text-white-50 mx-auto mb-0" style={{ maxWidth: '420px', fontSize: '0.98rem' }}>
+          <p className="lead font-sans text-white-50 mx-auto mb-0" style={{ maxWidth: '420px', fontSize: '0.96rem' }}>
             {currentTag.desc}. A verified end-to-end sequential workflow governing course enrolment to published transcripts.
           </p>
         </div>
 
         {/* Footer line */}
-        <div className="position-relative z-1 d-flex flex-wrap align-items-center justify-content-between gap-3 pt-3 border-top border-secondary border-opacity-25">
+        <div className="position-relative z-1 d-flex flex-wrap align-items-center justify-content-between gap-3 pt-3 border-top" style={{ borderColor: 'rgba(255, 255, 255, 0.12)' }}>
           <div className="font-sans small text-white-50">
             Department of Computer Science, Faculty of Physical Sciences
           </div>
-          <div className="d-flex align-items-center gap-1 font-mono small text-white-50">
-            <ShieldCheck size={14} style={{ color: 'var(--unn-green)' }} />
+          <div className="d-flex align-items-center gap-1 font-mono small" style={{ color: 'var(--gold)' }}>
+            <ShieldCheck size={14} />
             <span>UNN Academic Portal</span>
           </div>
         </div>
       </div>
 
       {/* ---------------- RIGHT SPLIT: SIGN IN FORM ---------------- */}
-      <div className="col-12 col-lg-6 d-flex flex-column align-items-center justify-content-center p-4 p-md-5">
+      <div 
+        className="col-12 col-lg-6 d-flex flex-column align-items-center justify-content-center p-4 p-md-5 position-relative"
+        style={{ backgroundColor: 'var(--bg)' }}
+      >
+        {/* Top-right Light / Dark mode toggle */}
+        <div className="position-absolute top-0 end-0 p-3 p-md-4">
+          <button
+            type="button"
+            onClick={toggleDarkMode}
+            className="btn btn-secondary btn-sm d-flex align-items-center gap-2"
+            id="login-theme-toggle-btn"
+            title={darkMode ? "Switch to Light mode" : "Switch to Dark mode"}
+          >
+            {darkMode ? (
+              <>
+                <Sun size={15} style={{ color: 'var(--gold)' }} />
+                <span>Light mode</span>
+              </>
+            ) : (
+              <>
+                <Moon size={15} style={{ color: 'var(--muted)' }} />
+                <span>Dark mode</span>
+              </>
+            )}
+          </button>
+        </div>
+
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -314,8 +356,10 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
           <div 
             className={`card mb-4 ${shaking ? 'input-invalid' : ''}`}
             style={{ 
-              backgroundColor: 'var(--bg-surface)',
-              transition: 'all 0.2s ease'
+              backgroundColor: 'var(--surface)',
+              borderRadius: '12px',
+              border: '1px solid var(--border)',
+              boxShadow: 'var(--shadow-lg)'
             }}
           >
             <div className="card-body p-4 p-sm-5">
@@ -325,16 +369,18 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
                 <p className="text-muted small">Enter your institutional credentials to proceed</p>
               </div>
 
-              {/* Error / Lockout Alert */}
+              {/* Error / Lockout Alert: danger-soft bg, 4px solid danger left border */}
               {errorMessage && (
                 <div 
-                  className={`alert ${lockoutSeconds > 0 ? 'alert-warning' : 'alert-danger'} d-flex flex-column gap-1 py-2 mb-4 shadow-sm`} 
+                  className="alert d-flex flex-column gap-1 py-2 mb-4" 
                   role="alert" 
                   id="login-error-alert"
                   style={{
-                    backgroundColor: lockoutSeconds > 0 ? 'rgba(212, 175, 55, 0.18)' : 'var(--vermilion-soft)',
-                    borderColor: lockoutSeconds > 0 ? 'var(--unn-gold)' : 'var(--vermilion)',
-                    color: lockoutSeconds > 0 ? '#634700' : 'var(--vermilion-dark)'
+                    backgroundColor: lockoutSeconds > 0 ? 'var(--gold-soft)' : 'var(--danger-soft)',
+                    border: '1px solid var(--border)',
+                    borderLeft: `4px solid ${lockoutSeconds > 0 ? 'var(--gold)' : 'var(--danger)'}`,
+                    color: lockoutSeconds > 0 ? 'var(--gold)' : 'var(--danger)',
+                    borderRadius: '8px'
                   }}
                 >
                   <div className="d-flex align-items-center gap-2">
@@ -395,16 +441,19 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
                     />
                     <button
                       type="button"
-                      className="btn btn-outline-secondary d-flex align-items-center justify-content-center px-3"
+                      className="btn d-flex align-items-center justify-content-center px-3"
                       onClick={() => setShowPassword(!showPassword)}
                       id="toggle-password-visibility-btn"
                       title={showPassword ? "Hide password" : "Show password"}
                       aria-label={showPassword ? "Hide password" : "Show password"}
                       tabIndex="-1"
                       style={{
-                        borderColor: 'var(--ink-border, #0F1B2D)',
-                        backgroundColor: 'var(--bg-surface-warm, #FAF6EE)',
-                        color: 'var(--ink, #0F1B2D)'
+                        border: '1px solid var(--border)',
+                        borderLeft: 'none',
+                        backgroundColor: 'var(--surface-2)',
+                        color: 'var(--muted)',
+                        borderRadius: '0 10px 10px 0',
+                        boxShadow: 'none'
                       }}
                     >
                       {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -418,8 +467,8 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
                   disabled={loading || lockoutSeconds > 0}
                   id="login-submit-btn"
                   style={{
-                    backgroundColor: lockoutSeconds > 0 ? 'var(--ink-light)' : 'var(--role-accent, var(--primary))',
-                    height: '46px'
+                    height: '46px',
+                    borderRadius: '10px'
                   }}
                 >
                   {loading ? (
@@ -447,7 +496,7 @@ export default function Login({ onLoginSuccess, initialMessage = '' }) {
             <div className="card" id="demo-accounts-card">
               <div className="card-body p-3">
                 <div className="d-flex align-items-center justify-content-center gap-1 mb-2 text-center">
-                  <KeyRound size={15} style={{ color: 'var(--unn-gold)' }} />
+                  <KeyRound size={15} style={{ color: 'var(--gold)' }} />
                   <span className="font-mono fw-bold text-uppercase small" style={{ fontSize: '0.72rem', letterSpacing: '0.08em', color: 'var(--ink)' }}>
                     UNN Demo Accounts (Defence Mode Only)
                   </span>
