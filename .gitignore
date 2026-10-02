@@ -18,3 +18,4 @@ temp_security_profile/
 .idea/
 .DS_Store
 Thumbs.db
+frontend/.vite/
